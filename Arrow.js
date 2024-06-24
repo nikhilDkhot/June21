@@ -39,3 +39,6 @@ function NormalFunction(){
 
 const intance = NormalFunction();
 
+//Output
+//normal function:  undefined
+//arrow function:  33
