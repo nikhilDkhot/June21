@@ -20,7 +20,7 @@ myPromise
     });
 
 //Asynchronous opertion
-function fetchData() {
+function fetchData() {// 
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             //let dataFetched = true; // Simulating successful data fetch
