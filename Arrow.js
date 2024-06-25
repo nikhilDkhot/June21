@@ -1,6 +1,7 @@
 //they are functions without a name and are not bound by an identifier
 //do not return any value and can be declared without the function keyword.
-//Arrow functions do not have the prototype property like this, arguments, or super.
+//Arrow functions do not have the prototype property like this, arguments,
+// or super.
 //Arrow functions cannot be used with the new keyword.
 //Arrow functions cannot be used as constructors.
 

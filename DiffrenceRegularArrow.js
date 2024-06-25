@@ -15,7 +15,8 @@ const obj = {
 //obj.regularFunction(); // undefined (or error in strict mode)
 //obj.arrowFunction();   // 42
 
-//Arrow functions do not have their own arguments object. They inherit arguments from the enclosing scope.
+//Arrow functions do not have their own arguments object. They inherit 
+//arguments from the enclosing scope.
 function regularFunction() {
     console.log(arguments); // [1, 2, 3]
 }
@@ -34,7 +35,8 @@ const arrowFunction1 = (...args) => {
 arrowFunction1(1, 2, 3);
 
 
-//Arrow functions cannot be used as constructors and will throw an error if used with the new keyword.
+//Arrow functions cannot be used as constructors and will throw an error 
+//if used with the new keyword.
 const ArrowConst = () => {
     this.value = 42;
 };
