@@ -21,13 +21,21 @@ class Player {
         this.age = age;
         this.role = role;
     }
-}  
+}
 
-let abc = new Player("virat","36","batsman")
-console.log(abc);
-console.log(abc.name+` ${abc.age}  ${abc.role} `);
+
+ Player.prototype.showDetail=function(){
+ 
+    console.log(`${this.name} is ${this.age} old and he is ${this.role}`)
+} 
+
+/* Player.prototype.showDetail=() => {
+ 
+    console.log(`${this.name} is ${this.age} old and he is ${this.role}`)
+} */
 let abc1 = new Player("rohit","38","batsman")
-console.log(abc1.name+` ${abc1.age}  ${abc1.role} `);
+
+abc1.showDetail();
 
 /*Classes in JavaScript provide blueprints for creating objects with similar properties and methods. 
 Objects are instances of classes. 
