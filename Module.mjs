@@ -13,6 +13,7 @@ selective imports.
 */
 export const value1 = 42;
 export function func() { return 'hello'; }
+func()
 
 /*If you want to import every public function from another module, use the 
 asterisk * keyword*/
