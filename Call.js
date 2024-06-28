@@ -11,10 +11,10 @@ let userDetail={
    
 }
 
-let printDetails = function(){
-    console.log(this.name)
+let printDetails = function(dist){
+    console.log(this.name+" "+dist)
 } 
-printDetails.call(userDetail);
+printDetails.call(userDetail," sangli");
 
 let userDetail2={
     name : "Vaibhav Kate",
@@ -26,7 +26,7 @@ let userDetail2={
 
 }
 //function borrowing
-printDetails.call(userDetail2);
+printDetails.call(userDetail2," nagar");
 
 
 
