@@ -8,12 +8,13 @@ let userDetail={
     name : "Nikhil khot",
     age:28,
     Designation:"full stack",
-    printDetails:function(){
-        console.log(this.name)
-    } 
-
+   
 }
-//userDetail.printDetails();
+
+let printDetails = function(){
+    console.log(this.name)
+} 
+printDetails.call(userDetail);
 
 let userDetail2={
     name : "Vaibhav Kate",
@@ -25,7 +26,6 @@ let userDetail2={
 
 }
 //function borrowing
-userDetail.printDetails.call(userDetail2);
-//userDetail.printDetails()
+
 
 
