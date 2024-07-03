@@ -23,28 +23,29 @@ to be encapsulated and inaccessible from outside the function */
 var counter = (function() {
 	var count = 0;
 
-	return {
-		increment: function() {
-			count++;
-		},
-		decrement: function() {
-			count--;
-		},
-		getCount: function() {
-			return count;
-		}
-	};
+	return count //{
+		// increment: function() {
+		// 	count++;
+		// },
+		// decrement: function() {
+		// 	count--;
+		// },
+		// getCount: function() {
+		// 	return count;
+		// },
+		// count
+	//};
 })();
+console.log(typeof counter)
+// // Increment the counter
+// counter.increment();
+// counter.increment();
+// counter.increment();
 
-// Increment the counter
-counter.increment();
-counter.increment();
-counter.increment();
-
-console.log(counter.getCount()); // Output: 3
+// console.log(counter.getCount()); // Output: 3
 
 // Trying to access the private count variable directly
-console.log(counter.count); // Output: undefined (cannot access private variable)
+// console.log(counter.count); // Output: undefined (cannot access private variable)
 
 /*
 Use Cases Of IIFE
