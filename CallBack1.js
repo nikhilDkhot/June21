@@ -31,5 +31,5 @@ function mainFunction(callback) {
   
   // Call the main function with the callback function
   mainFunction(callbackFunction);
-  //This code is contributed by Veerendra Singh Rajpoot
+  //
   
