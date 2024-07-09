@@ -16,8 +16,13 @@ class Stack{
     }
 
     pop(){
-        if(this.item.length==0)
+     if(this.item.length==0)
+    {
         return "underflow"
+    } 
+   /*  if(isEmpty()){
+       return "nothing is here"
+    } */
         return this.item.pop()
     }
 
@@ -30,7 +35,7 @@ class Stack{
 
         let str = "";
         for(let i = 0;i < this.item.length; i++)
-            str += this.item[i] + " ";
+        {  str += this.item[i] + " ";}
         return str;
         
     }

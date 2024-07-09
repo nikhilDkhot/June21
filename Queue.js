@@ -13,10 +13,10 @@ class Queue1{
         this.backIndex = 0;
     }
 
-    enqueue(item){
-        this.item[this.backIndex] = item
+    enqueue(element){
+        this.item[this.backIndex] = element
         this.backIndex++
-        return item + " inserted" 
+        return element + " inserted" 
     }
 
     dequeue(){
@@ -33,8 +33,6 @@ class Queue1{
     get printQueue(){
         return this.item;
     }
-
-    
 
     }
 
