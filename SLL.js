@@ -53,7 +53,7 @@ class LinkedList{
                 }
                 prev.next = current.next;
             }
-            this.size;
+            this.size--;
 
             return current.element;
         }
