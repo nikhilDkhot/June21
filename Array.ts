@@ -20,3 +20,10 @@ let ourTuple: [number, boolean, string];
 // initialize correctly
 ourTuple = [5, false, 'love is in giving'];
 console.log(ourTuple)
+
+/* let ourTuple1: [number, boolean, string];
+
+// initialized incorrectly which throws an error
+ourTuple1 = [false, 'Coding God was mistaken', 5]; */
+
+//Type 'boolean' is not assignable to type 'number'.
