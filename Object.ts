@@ -26,3 +26,16 @@ const nameAgeMap: { [index: string]: number } = {};
 nameAgeMap.Jack = 25; // no error
 //nameAgeMap.Mark = "Fifty"; // Error: Type 'string' is not assignable to type 'number'
 
+// Define an interface with an index signature
+interface StringArray {
+  [index: number]: string; // index signature: key is a number, value is a string
+}
+
+// Example usage
+let myArray: StringArray = {
+  1: 'hello',
+  2: 'hii'
+}
+let firstItem: string = myArray[2]; // Okay, returns "Hello"
+
+console.log(firstItem)
