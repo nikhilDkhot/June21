@@ -35,5 +35,30 @@ function pow(value: number, exponent: number = 2) {
   
   console.log(pow(15));
   
-  
+/*************************/
+//Named Parameters
+function divide({ dividend, divisor }: { dividend: number, divisor: number }) {
+  return dividend / divisor;
+}
+
+console.log(550/5)
+
+/***********************/
+//Rest Parameters
+function add1(a: number, b: number, ...rest: number[]) {
+  return a + b + rest.reduce((p, c) => p + c, 0);
+}
+
+let arr = [33,33]
+
+console.log(add1(1,1,...arr))
+
+//Type Alias
+type Negate = (value: number) => number;
+
+// in this function, the parameter `value` automatically gets assigned the type `number` from the type `Negate`
+const negateFunction: Negate = (value) => value * -1;
+
+console.log(negateFunction(12));
+
   
