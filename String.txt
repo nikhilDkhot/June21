@@ -1,0 +1,71 @@
+#String
+->are the sequence of characters.
+->treated as Primitive data types.
+->strings are automatically converted to string objects when using string methods on them.
+This process is called auto-boxing.
+
+#JavaScript slice() Method
+JavaScript slice method extracts a part of the string based on the given stating-index and 
+ending-index and returns a new string.
+
+#JavaScript substr() Method
+JavaScript substr() method This method returns the specified number of characters from the 
+specified index from the given string. It extracts a part of the original string.
+
+#JavaScript replace()
+JavaScript replace() method replaces a part of the given string with another string or a regular
+expression. The original string will remain unchanged.
+
+#JavaScript toUpperCase()
+JavaScript toUpperCase() method converts all the characters present in the String to upper case 
+and returns a new String with all characters in upper case. This method accepts single parameter
+stringVariable string that you want to convert in upper case.
+
+#JavaScript toLowerCase()
+JavaScript toLowerCase() method converts all the characters present in the  lowercase and returns
+a new string with all the characters in lowercase.
+
+JavaScript concat() Method
+JavaScript concat() method method combines the text of two strings and returns a new combined 
+or joined string. To concatenate two strings, we use the concat() method on one object of 
+string and send another object of string as a parameter. This method accepts one argument. 
+The variable contains text in double quotes or single quotes.
+
+##JavaScript trim() method is used to remove either white spaces from the given string. 
+This method returns a new string with removed white spaces. This method is called on a String 
+object. This method doesn’t accept any parameter.
+
+##JavaScript trimStart() method removes whitespace from the beginning of a string. The value of 
+the string is not modified in any manner, including any whitespace present after the string.
+
+##JavaScript trimEnd() method removes white space from the end of a string. The value of the 
+string is not modified in any manner, including any white-space present before the string.
+
+##The padStart() method in JavaScript is used to pad a string with another string until 
+it reaches the given length. The padding is applied from the left end of the string.
+
+##JavaScript padEnd() Method
+JavaScript padEnd() method pad a string with another string until it reaches the given length. 
+The padding is applied from the right end of the string.
+
+##JavaScript charAt() Method
+JavaScript charAt() method returns the character at the specified index. String in JavaScript 
+has zero-based indexing.
+
+##JavaScript charCodeAt() Method
+JavaScript charCodeAt() method returns a number that represents the Unicode value of the 
+character at the specified index.This method accepts one argument.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
