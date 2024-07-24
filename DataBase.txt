@@ -1,0 +1,365 @@
+create table cars (
+    brand varchar(255),
+    model varchar(255),
+    year int
+);
+
+O/p-CREATE TABLE
+###################
+select * from cars;
+
+ brand | model | year
+-------+-------+------
+
+####################
+insert into cars(brand,model,year)
+values ('Ford','Mustang',1964);
+
+INSERT 0 1
+
+select * from cars;
+
+ brand |  model  | year
+-------+---------+------
+ Ford  | Mustang | 1964
+(1 row)
+
+#######################
+insert into cars(brand,model,year)
+values 
+('Volvo','p1800',1968),
+('BMW','M1',1978),
+('Toyota','Celica',1975);
+INSERT 0 3
+
+#########################
+select brand, year from cars;
+
+ brand  | year
+--------+------
+ Ford   | 1964
+ Volvo  | 1968
+ BMW    | 1978
+ Toyota | 1975
+ (4 rows)
+
+############################
+alter table cars
+add color varchar(255);
+
+ALTER TABLE
+############################
+update cars
+set color = 'red'
+where brand = 'Volvo';
+
+UPDATE 1
+SELECT * FROM cars;
+ brand  |  model  | year | color
+--------+---------+------+-------
+ Ford   | Mustang | 1964 |
+ BMW    | M1      | 1978 |
+ Toyota | Celica  | 1975 |
+ Volvo  | p1800   | 1968 | red
+##############################
+update cars
+set color = 'red';
+UPDATE 4
+select * from cars;
+ brand  |  model  | year | color
+--------+---------+------+-------
+ Ford   | Mustang | 1964 | red
+ BMW    | M1      | 1978 | red
+ Toyota | Celica  | 1975 | red
+ Volvo  | p1800   | 1968 | red
+(4 rows)
+##############################
+update cars
+set color ='white', year = 1970
+where brand = 'Toyota';
+UPDATE 1
+ brand  |  model  | year | color
+--------+---------+------+-------
+ Ford   | Mustang | 1964 | red
+ BMW    | M1      | 1978 | red
+ Volvo  | p1800   | 1968 | red
+ Toyota | Celica  | 1970 | white
+(4 rows)
+#################################
+alter table cars
+alter column year type varchar(4);
+ALTER TABLE
+
+################################
+alter table cars
+alter column color type varchar(30);
+ALTER TABLE
+
+##################################
+alter table cars
+drop column color;
+ALTER TABLE
+ brand  |  model  | year
+--------+---------+------
+ Ford   | Mustang | 1964
+ BMW    | M1      | 1978
+ Volvo  | p1800   | 1968
+ Toyota | Celica  | 1970
+
+########################
+DELETE FROM cars;
+
+deletes all rows in the cars table, without deleting the table.
+
+###########################
+TRUNCATE TABLE cars;
+
+deletes all rows in the cars table, without deleting the table.
+#############################
+DROP TABLE cars;
+
+used to drop an existing table in a database.
+
+##############################
+##Operator
+=>Equal To(=)
+select * from cars 
+where brand = 'Volvo';
+
+ brand | model | year
+-------+-------+------
+ Volvo | p1800 | 1968
+
+
+=>Less Than(<)
+select * from cars 
+where year < '1975';
+ brand  |  model  | year
+--------+---------+------
+ Ford   | Mustang | 1964
+ Volvo  | p1800   | 1968
+ Toyota | Celica  | 1970
+(3 rows)
+
+=>Greater Than(>)
+select * from cars
+where year > '1975';
+
+ brand | model | year
+-------+-------+------
+ BMW   | M1    | 1978
+(1 row)
+
+=>Greater Than or Equal to
+select * from cars
+where year >= '1970';
+ brand  | model  | year
+--------+--------+------
+ BMW    | M1     | 1978
+ Toyota | Celica | 1970
+(2 rows)
+
+=>Not Equal To
+select * from cars 
+where brand <> 'Volvo';
+ brand  |  model  | year
+--------+---------+------
+ Ford   | Mustang | 1964
+ BMW    | M1      | 1978
+ Toyota | Celica  | 1970
+(3 rows) 
+
+select * from cars 
+where brand != 'Volvo';
+ brand  |  model  | year
+--------+---------+------
+ Ford   | Mustang | 1964
+ BMW    | M1      | 1978
+ Toyota | Celica  | 1970
+(3 rows)
+
+=>LIKE
+select * from cars 
+where model like 'M%';
+
+ brand |  model  | year
+-------+---------+------
+ Ford  | Mustang | 1964
+ BMW   | M1      | 1978
+(2 rows)
+
+select * from cars 
+where model like '%g';
+ brand |  model  | year
+-------+---------+------
+ Ford  | Mustang | 1964
+
+select * from cars 
+where model like '%G';
+ brand | model | year
+-------+-------+------
+(0 rows)
+
+The LIKE operator is case sensitive.
+
+=>ILIKE
+select * from cars
+where model ilike 'm%';
+ brand |  model  | year
+-------+---------+------
+ Ford  | Mustang | 1964
+ BMW   | M1      | 1978
+(2 rows)
+ILIKE is case insensitive.
+
+=>AND
+select * from cars
+where brand = 'Volvo' and year = '1968'; 
+ brand | model | year
+-------+-------+------
+ Volvo | p1800 | 1968
+
+select * from cars
+where brand = 'Volvo' and year = '1978'; 
+
+ brand | model | year
+-------+-------+------
+(0 rows)
+
+=>OR
+SELECT * FROM cars
+WHERE brand = 'Volvo' OR year = '1978';
+
+ brand | model | year
+-------+-------+------
+ BMW   | M1    | 1978
+ Volvo | p1800 | 1968
+(2 rows)
+
+=>IN
+select * from cars 
+where brand in ('Volvo','Mercedes','Ford');
+ brand |  model  | year
+-------+---------+------
+ Ford  | Mustang | 1964
+ Volvo | p1800   | 1968
+(2 rows)
+
+=>between
+select * from cars 
+where year between '1970' and '1980';
+ brand  | model  | year
+--------+--------+------
+ BMW    | M1     | 1978
+ Toyota | Celica | 1970
+(2 rows) 
+
+=>is null
+select * from cars 
+where model is null;
+ brand | model | year
+-------+-------+------
+(0 rows)
+
+=>NOT
+select * from cars 
+where model is not null;
+ brand  |  model  | year
+--------+---------+------
+ Ford   | Mustang | 1964
+ BMW    | M1      | 1978
+ Volvo  | p1800   | 1968
+ Toyota | Celica  | 1970
+(4 rows)
+
+NOT operator can be used together with LIKE, ILIKE, IN, BETWEEN, and NULL operators to reverse
+the truth of the operator.
+
+=>The SELECT DISTINCT Statement
+select distinct model from cars;
+  model
+---------
+ M1
+ Celica
+ p1800
+ Mustang
+(4 rows)
+
+=>SELECT COUNT(DISTINCT)
+count is aggregate function
+select count(distinct model) from cars;
+ count
+-------
+     4
+(1 row)
+
+=>Filter Records
+The WHERE clause is used to filter records.
+It is used to extract only those records that fulfill a specified condition.
+
+=>Sort Data
+ORDER BY keyword is used to sort the result in ascending or descending order.
+Sort Alphabetically
+select * from cars 
+order by brand;
+ brand  |  model  | year
+--------+---------+------
+ BMW    | M1      | 1978
+ Ford   | Mustang | 1964
+ Toyota | Celica  | 1970
+ Volvo  | p1800   | 1968
+(4 rows)
+
+=>DESC
+Alphabetically DESC
+select * from cars 
+order by brand desc;
+ brand  |  model  | year
+--------+---------+------
+ Volvo  | p1800   | 1968
+ Toyota | Celica  | 1970
+ Ford   | Mustang | 1964
+ BMW    | M1      | 1978
+(4 rows)
+
+The LIMIT Clause
+select * from cars
+limit 2;
+ brand |  model  | year
+-------+---------+------
+ Ford  | Mustang | 1964
+ BMW   | M1      | 1978
+
+The OFFSET Clause
+select * from cars
+limit 2 OFFSET 1;
+ brand | model | year
+-------+-------+------
+ BMW   | M1    | 1978
+ Volvo | p1800 | 1968
+(2 rows)
+
+select * from cars
+limit 3 OFFSET 0;
+ brand |  model  | year
+-------+---------+------
+ Ford  | Mustang | 1964
+ BMW   | M1      | 1978
+ Volvo | p1800   | 1968
+(3 rows)
+
+SELECT brand, COUNT(*) as count FROM 
+cars GROUP BY brand;
+ brand  | count
+--------+-------
+ Ford   |     3
+ Volvo  |     3
+ Honda  |     2
+ BMW    |     3
+ Toyota |     3
+(5 rows)
+
+
+
+
+
