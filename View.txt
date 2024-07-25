@@ -1,0 +1,45 @@
+Views are pseudo-tables. That is, they are not real tables; nevertheless appear as ordinary 
+tables to SELECT. A view can represent a subset of a real table, selecting certain columns or 
+certain rows from an ordinary table. A view can even represent joined tables. Because views are 
+assigned separate permissions, you can use them to restrict table access so that the users see 
+only specific rows or columns of a table.
+
+Since views are not ordinary tables, you may not be able to execute a DELETE, INSERT, or UPDATE
+statement on a view. However, you can create a RULE to correct this problem of using DELETE, 
+INSERT or UPDATE on a view.
+
+CREATE [TEMP | TEMPORARY] VIEW view_name AS
+SELECT column1, column2.....
+FROM table_name
+WHERE [condition];
+
+SELECT * FROM view_name;
+
+Since views are not ordinary tables, you may not be able to execute a DELETE, INSERT, or UPDATE 
+statement on a view. However, you can create a RULE to correct this problem of using DELETE, 
+INSERT or UPDATE on a view.
+
+create view car_view as
+select brand,model
+from cars;
+
+CREATE VIEW
+
+select * from car_view;
+ brand  |  model
+--------+----------
+ Ford   | Mustang
+ BMW    | M1
+ Volvo  | p1800
+ Toyota | Celica
+ Toyota | Corolla
+ Honda  | Civic
+ Ford   | F-150
+ BMW    | X5
+ Volvo  | XC90
+ Toyota | Camry
+ Honda  | Accord
+ Ford   | Explorer
+ BMW    | 3 Series
+ Volvo  | S60
+(14 rows)

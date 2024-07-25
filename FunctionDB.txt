@@ -1,0 +1,85 @@
+CREATE TABLE products1 (
+    product_id SERIAL PRIMARY KEY,
+    product_name VARCHAR(255) NOT NULL,
+    price REAL NOT NULL,
+    quantity INT NOT NULL
+);
+
+INSERT INTO products1 (product_name, price, quantity) VALUES
+('Laptop', 999.99, 10),
+('Smartphone', 599.99, 25),
+('Tablet', 299.99, 15),
+('Headphones', 99.99, 50),
+('Smartwatch', 199.99, 20);
+
+CREATE FUNCTION calculate_stock_value(p_product_id INT)
+RETURNS REAL AS $$
+DECLARE
+    v_price REAL;
+    v_quantity INT;
+    v_total_value REAL;
+BEGIN
+    -- Retrieve the price and quantity for the given product ID
+    SELECT price, quantity INTO v_price, v_quantity
+    FROM products1
+    WHERE product_id = p_product_id;
+    
+    -- Calculate the total stock value
+    v_total_value = v_price * v_quantity;
+    
+    -- Return the total stock value
+    RETURN v_total_value;
+END;
+$$ LANGUAGE plpgsql;
+
+*****************************
+FUNCTION call
+select calculate_stock_value(5);
+ calculate_stock_value
+-----------------------
+                3999.8
+(1 row)
+
+STORED PROCEDURE 
+CREATE PROCEDURE calculate_annual_salary(IN monthly_salary NUMERIC, OUT annual_salary NUMERIC)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    annual_salary := monthly_salary * 12;
+END;
+$$;
+o/p = CREATE PROCEDURE
+>function call
+DO $$
+DECLARE
+    result NUMERIC;
+BEGIN
+    CALL calculate_annual_salary(5000, result);
+    RAISE NOTICE 'Annual Salary: %', result;
+END;
+$$;
+NOTICE:  Annual Salary: 60000
+DO
+
+***********
+CREATE TABLE employees (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100),
+    position VARCHAR(100),
+    salary NUMERIC
+);
+
+#have created pocedure here
+CREATE PROCEDURE add_employee(IN emp_name VARCHAR, IN emp_position VARCHAR, IN emp_salary NUMERIC)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    INSERT INTO employees (name, position, salary) 
+    VALUES (emp_name, emp_position, emp_salary);
+END;
+$$;
+
+CALL add_employee('nick', 'Software Engineer', 75000);
+
+
+ 

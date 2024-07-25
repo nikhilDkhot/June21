@@ -1,0 +1,170 @@
+JOINS
+SELECT
+    o.order_id,
+    c.customer_name,
+    p.product_name,
+    o.order_date,
+    o.quantity,
+    p.price,
+    (o.quantity * p.price) AS total_price
+FROM
+    orders o
+inner JOIN
+    customers c ON o.customer_id = c.customer_id
+inner JOIN
+    products p ON o.product_id = p.product_id;
+ order_id | customer_name  | product_name | order_date | quantity | price | total_price
+----------+----------------+--------------+------------+----------+-------+-------------
+        1 | Alice Smith    | iPhone 13    | 2023-01-15 |        2 |   999 |        1998
+        2 | Bob Johnson    | Galaxy S21   | 2023-02-20 |        1 |   799 |         799
+        3 | Carol Williams | Pixel 6      | 2023-03-10 |        3 |   699 |        2097
+        4 | Alice Smith    | Galaxy S21   | 2023-04-05 |        1 |   799 |         799
+        5 | Bob Johnson    | Pixel 6      | 2023-05-12 |        2 |   699 |        1398
+
+left JOIN
+SELECT
+    c.customer_name,
+    c.customer_id,
+    o.order_id
+    
+FROM
+    customers c
+LEFT JOIN
+    orders o ON c.customer_id = o.customer_id;
+  customer_name  | customer_id | order_id
+----------------+-------------+----------
+ Alice Smith    |           1 |        1
+ Bob Johnson    |           2 |        2
+ Carol Williams |           3 |        3
+ Alice Smith    |           1 |        4
+ Bob Johnson    |           2 |        5
+ Eva Green      |           5 |
+ Henry Adams    |           8 |
+ Frank White    |           6 |
+ David Brown    |           4 |
+ Ivy Blue       |           9 |
+ Grace Black    |           7 |
+(11 rows)
+
+SELECT
+    c.customer_name,
+    c.customer_id,
+    o.order_id
+    
+FROM
+    customers c
+RIGHT JOIN
+    orders o ON c.customer_id = o.customer_id;
+
+ customer_name  | customer_id | order_id
+----------------+-------------+----------
+ Alice Smith    |           1 |        1
+ Bob Johnson    |           2 |        2
+ Carol Williams |           3 |        3
+ Alice Smith    |           1 |        4
+ Bob Johnson    |           2 |        5
+
+FULL JOIN
+SELECT
+    c.customer_id,
+    c.customer_name,
+    o.order_id
+    
+FROM
+    customers c
+FULL JOIN
+    orders o ON c.customer_id = o.customer_id;
+ customer_id | customer_name  | order_id
+-------------+----------------+----------
+           1 | Alice Smith    |        1
+           2 | Bob Johnson    |        2
+           3 | Carol Williams |        3
+           1 | Alice Smith    |        4
+           2 | Bob Johnson    |        5
+           5 | Eva Green      |
+           8 | Henry Adams    |
+           6 | Frank White    |
+           4 | David Brown    |
+           9 | Ivy Blue       |
+           7 | Grace Black    |
+
+CROSS JOIN
+SELECT
+    o.order_id,
+    o.customer_id AS order_customer_id,
+    c.customer_name
+    
+FROM
+    orders o
+CROSS JOIN
+    customers c;
+
+
+PostgreSQL Constraints
+The constraints are used to describe the rules for the data columns in a table. If there is any 
+destruction between the constraints and the data action, the action is terminated immediately.
+
+not null
+This type of constraint is used to make sure that a column cannot have a null value. And no 
+name can be further defined to generate a not-null constraint.
+CREATE TABLE Customer(  
+Cust_Id INT PRIMARY KEY NOT NULL,  
+Cust_Name TEXT NOT NULL,   
+Cust_Address CHAR(50),  
+Cust_Age INT NOT NULL,  
+Cust_Salary REAL  
+);  
+
+check
+It is used to make sure that all values in a column or a field of a table satisfy particular 
+situations such as it must match a Boolean expression. The Check constraint can be defined by a 
+separate name.
+CREATE TABLE Customer2(  
+Cust_Id INT PRIMARY KEY NOT NULL,  
+Cust_Name TEXT NOT NULL,   
+Cust_Address CHAR(30),  
+Cust_Age INT NOT NULL,  
+Cust_Salary REAL check (Cust_Salary>0)  
+);
+
+Unique
+The unique constraints are used to make sure that all values in a column of a table are 
+exclusive.
+CREATE TABLE Customer3(  
+Cust_Id INT PRIMARY KEY NOT NULL,  
+Cust_Name TEXT NOT NULL,   
+Cust_Address CHAR(30),  
+Cust_Age INT NOT NULL Unique,  
+Cust_Salary REAL default 20000.00  
+); 
+
+
+Primary key
+The primary key is to specify each row or record in a database table uniquely and make sure 
+that there is no record duplicity in a particular table.
+CREATE TABLE Employee(  
+Emp_Id INT PRIMARY KEY NOT NULL,  
+Emp_Name TEXT NOT NULL,   
+Emp_Address CHAR(30),  
+Emp_Age INT NOT NULL  
+);
+
+Foreign key
+In PostgreSQL, the foreign key is used to define that the value in a column or field of a table 
+is equal to the real value of the primary key of another table.
+CREATE TABLE Employee(  
+Emp_Id INT PRIMARY KEY NOT NULL,  
+Emp_Name TEXT NOT NULL,   
+Emp_Address CHAR(30),  
+Emp_Age INT NOT NULL  
+)
+
+CREATE TABLE cust(  
+Emp_Id INT PRIMARY KEY NOT NULL,  
+Cust CHAR(50) NOT NULL,  
+Cust_Id INT references Employee1(Emp_Id)  
+);
+
+
+
+ALTER TABLE table_name DROP CONSTRAINT some_name;  

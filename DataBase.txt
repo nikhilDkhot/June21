@@ -359,6 +359,63 @@ cars GROUP BY brand;
  Toyota |     3
 (5 rows)
 
+MIN
+SELECT MIN(price)
+FROM mobile;
+ min
+-----
+ 649
+(1 row)
+
+MAX
+SELECT MAX(price)
+FROM mobile;
+ max
+------
+ 1149
+(1 row)
+
+COUNT
+SELECT COUNT(brand)
+FROM mobile;
+ count
+-------
+    10
+(1 row)
+
+SELECT COUNT(model)
+FROM cars
+WHERE brand = 'Ford';
+ count
+-------
+     3
+(1 row)
+
+SUM
+SELECT SUM(price)
+FROM mobile;
+ sum
+------
+ 8660
+(1 row)
+
+AVG
+SELECT AVG(price)
+FROM mobile;
+         avg
+----------------------
+ 866.0000000000000000
+(1 row)
+
+SELECT AVG(price)::NUMERIC(10,2)
+FROM mobile;
+  avg
+--------
+ 866.00
+(1 row)
+
+    
+
 
 
 
